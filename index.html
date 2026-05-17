@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Nimi ❤️ | Forever Yours</title>
+    
+    <!-- Meta tags for Premium Presentation -->
+    <meta name="description" content="A luxury emotional cinematic birthday surprise for a very special person - Nimi. Built with pure love.">
+    
+    <!-- Luxurious Typography from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Internal CSS Sheet Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CUSTOM CURSOR -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-dot"></div>
+
+    <!-- PREMIUM LOADING SCREEN -->
+    <div id="loader-screen">
+        <div class="loader-container">
+            <!-- Pulsing Glowing Double Hearts SVG -->
+            <div class="loader-heart-wrapper">
+                <svg class="loader-heart" viewBox="0 0 32 29.6">
+                    <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                    c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                </svg>
+                <svg class="loader-heart-sub" viewBox="0 0 32 29.6">
+                    <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                    c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                </svg>
+            </div>
+            <h2 class="loader-title">Preparing Something Special</h2>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+            <p class="loader-subtitle">For Nimi ❤️</p>
+        </div>
+    </div>
+
+    <!-- GLOBAL BACKGROUND INTERACTIVE CANVAS -->
+    <canvas id="particle-canvas"></canvas>
+    
+    <!-- BACKGROUND AMBIENT BLOBS -->
+    <div class="ambient-glow blob-1"></div>
+    <div class="ambient-glow blob-2"></div>
+    <div class="ambient-glow blob-3"></div>
+
+    <!-- SCROLL PROGRESS BAR -->
+    <div id="scroll-progress-container">
+        <div id="scroll-progress-bar"></div>
+    </div>
+
+    <!-- FLOATING MUSIC SYSTEM CONTROLLER -->
+    <div id="music-player-container" class="glass-panel">
+        <div class="music-info">
+            <span class="music-status">Chopin - Nocturne Op. 9 No. 2 🎵</span>
+            <div class="music-wave-visualizer">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+        </div>
+        <div class="music-controls">
+            <button id="music-toggle-btn" class="glowing-icon-btn" aria-label="Play Music">
+                <!-- Play Icon -->
+                <svg class="icon-play" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                <!-- Pause Icon (hidden initially) -->
+                <svg class="icon-pause hidden" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+            </button>
+            <div class="volume-slider-wrapper">
+                <svg class="icon-volume" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN INTERACTIVE CONTAINER -->
+    <main>
+        
+        <!-- SECTION 1: CINEMATIC HERO INTRO -->
+        <section id="section-hero" class="full-screen-section">
+            <div class="hero-content">
+                <span class="hero-tag reveal-element">A Cinematic Love Story...</span>
+                <h1 class="hero-title reveal-element">Happy Birthday Nimi <span class="heart-pulse">❤️</span></h1>
+                
+                <!-- Typing Subtitle Container -->
+                <div class="typing-container reveal-element">
+                    <span id="hero-typing-text"></span><span class="typing-cursor">|</span>
+                </div>
+                
+                <div class="hero-actions reveal-element">
+                    <button id="btn-open-surprise" class="btn-primary-glow ripple-trigger">
+                        <span>Open Your Surprise 💌</span>
+                    </button>
+                    <button id="btn-hero-music" class="btn-secondary-glow ripple-trigger">
+                        <span>Play Romantic Melodies 🎵</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Floating indicator to invite scroll -->
+            <div class="scroll-indicator">
+                <span class="scroll-text">Scroll into our universe</span>
+                <div class="scroll-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ROMANTIC MESSAGE -->
+        <section id="section-message" class="scroll-section">
+            <div class="section-container">
+                <div class="glass-card message-card reveal-element">
+                    <div class="card-glow-border"></div>
+                    <div class="message-header">
+                        <div class="rose-bloom-icon">🌹</div>
+                        <h2 class="section-subtitle">To the girl who rules my heart</h2>
+                    </div>
+                    
+                    <!-- Line by line dynamic letter reveal -->
+                    <div class="message-content">
+                        <p class="emotional-line" data-delay="0">Dearest Nimi,</p>
+                        <p class="emotional-line" data-delay="1.2">Some moments in life are so special that words fail to capture their depth. Today, on your beautiful birthday, my heart is overflowing with thoughts of you.</p>
+                        <p class="emotional-line" data-delay="3.0">You are a melody in a chaotic world, a radiant light that brightens my darkest days. Simply being in your life is the greatest gift I could ever ask for.</p>
+                        <p class="emotional-line" data-delay="4.8">Every conversation with you, every sweet smile, and even our tiny, lovely moments are permanently etched in my soul as my most precious treasures.</p>
+                        <p class="emotional-line" data-delay="6.6">This digital space is just a tiny mirror reflecting the massive universe of appreciation I hold for you. Let's step into this dream together... ❤️</p>
+                    </div>
+                    
+                    <div class="message-footer">
+                        <span class="signature">Yours, Forever & Always</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: WHY YOU ARE SPECIAL -->
+        <section id="section-special" class="scroll-section">
+            <div class="section-container">
+                <div class="section-title-wrapper reveal-element">
+                    <h2 class="section-title text-glow">Why You Are So Special ✨</h2>
+                    <p class="section-title-sub">Just a few of the infinite little things that make me fall for you every single day...</p>
+                </div>
+
+                <div class="cards-grid">
+                    
+                    <!-- Card 1 -->
+                    <div class="glass-card special-card reveal-element">
+                        <div class="card-inner-glow"></div>
+                        <div class="card-header">
+                            <span class="special-icon">😊</span>
+                            <h3>Your Smile</h3>
+                        </div>
+                        <p>It's the kind of light that can immediately banish the darkest clouds. The moment your eyes crinkle and your cheeks lift, the whole universe seems to take a quiet, beautiful breath of joy.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="glass-card special-card reveal-element">
+                        <div class="card-inner-glow"></div>
+                        <div class="card-header">
+                            <span class="special-icon">✨</span>
+                            <h3>Your Eyes</h3>
+                        </div>
+                        <p>Deep, cosmic, and full of secrets. Looking into them is like staring at a starry sky — effortless, mesmerizing, and filled with a warmth that makes me feel safe and perfectly understood.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass-card special-card reveal-element">
+                        <div class="card-inner-glow"></div>
+                        <div class="card-header">
+                            <span class="special-icon">❤️</span>
+                            <h3>Your Caring Nature</h3>
+                        </div>
+                        <p>You carry a gentle warmth that softens the world around you. You care deeply, love fully, and make everyone around you feel incredibly secure, supported, and immensely loved.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="glass-card special-card reveal-element">
+                        <div class="card-inner-glow"></div>
+                        <div class="card-header">
+                            <span class="special-icon">🌸</span>
+                            <h3>Your Voice</h3>
+                        </div>
+                        <p>Like a gentle summer wind or a perfect piano chime. Hearing you talk is my absolute favorite sound, a soothing symphony that can immediately set my racing mind at absolute peace.</p>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="glass-card special-card reveal-element">
+                        <div class="card-inner-glow"></div>
+                        <div class="card-header">
+                            <span class="special-icon">😄</span>
+                            <h3>The Way You Say “Hmm”</h3>
+                        </div>
+                        <p>That cute little sound that speaks a thousand unspoken words. It's funny, charming, extremely sweet, and completely unique to you. It's a tiny, adorable habit I completely adore.</p>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="glass-card special-card reveal-element">
+                        <div class="card-inner-glow"></div>
+                        <div class="card-header">
+                            <span class="special-icon">😭❤️</span>
+                            <h3>Your Little Anger</h3>
+                        </div>
+                        <p>Even when you are mildly annoyed or pretend-pouting, you look incredibly cute. Those little mock-angry faces and sweet scoldings only make me want to hug you and smile even more.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CAKE CUTTING EXPERIENCE -->
+        <section id="section-cake" class="scroll-section">
+            <div class="section-container">
+                <div class="section-title-wrapper reveal-element">
+                    <h2 class="section-title text-glow">The Cinematic Cake Ceremony 🎂</h2>
+                    <p class="section-title-sub">Light the candles, feel the magic, and swipe the knife to cut the birthday cake!</p>
+                </div>
+
+                <div class="cake-ceremony-wrapper glass-card reveal-element">
+                    <div class="cake-interactive-container">
+                        
+                        <!-- Interative Sparkle Canvas specifically for cake -->
+                        <canvas id="cake-sparkle-canvas"></canvas>
+
+                        <!-- Candle Sparkle/Match lighting area -->
+                        <div class="candle-lighting-overlay">
+                            <div class="candle-help-tip">Tap/Hover candles to light them! 🔥</div>
+                        </div>
+
+                        <!-- Complete SVG Cake Design -->
+                        <svg id="interactive-cake-svg" viewBox="0 0 600 500">
+                            <!-- SVG Shadows -->
+                            <defs>
+                                <radialGradient id="cake-shadow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="rgba(10, 2, 22, 0.6)" />
+                                    <stop offset="100%" stop-color="rgba(10, 2, 22, 0)" />
+                                </radialGradient>
+                                <linearGradient id="frosting-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#ff7eb9" />
+                                    <stop offset="50%" stop-color="#ff2e93" />
+                                    <stop offset="100%" stop-color="#cc1b6f" />
+                                </linearGradient>
+                                <linearGradient id="cream-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffffff" />
+                                    <stop offset="100%" stop-color="#ffe4f0" />
+                                </linearGradient>
+                                <filter id="glow-candle">
+                                    <feGaussianBlur stdDeviation="5" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+
+                            <!-- Base Shadow -->
+                            <ellipse cx="300" cy="420" rx="200" ry="40" fill="url(#cake-shadow)" />
+
+                            <!-- Glass Cake Stand -->
+                            <ellipse cx="300" cy="400" rx="170" ry="25" fill="rgba(255, 255, 255, 0.12)" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1.5" />
+                            <path d="M 230 400 L 260 460 L 340 460 L 370 400 Z" fill="rgba(255, 255, 255, 0.08)" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
+                            <ellipse cx="300" cy="460" rx="50" ry="10" fill="rgba(255, 255, 255, 0.1)" />
+
+                            <!-- THE CAKE MAIN BODY -->
+                            <!-- We wrap the cake slices in separate groups so we can animate them parting apart when cut -->
+                            <g id="full-cake-group">
+                                <!-- LEFT SLICE HALF -->
+                                <g id="cake-left-half">
+                                    <!-- Base Layer -->
+                                    <path d="M 160 300 C 160 350, 300 370, 300 370 L 300 270 C 300 270, 160 250, 160 300 Z" fill="#4d1c68" />
+                                    <!-- Pink Frosting Layer -->
+                                    <path d="M 155 290 C 155 340, 300 365, 300 365 L 300 260 C 300 260, 155 235, 155 290 Z" fill="url(#frosting-grad)" />
+                                    <!-- Vanilla Cream Dripping Left -->
+                                    <path d="M 155 285 C 165 295, 185 285, 195 305 C 205 315, 215 290, 230 305 C 245 320, 260 295, 280 310 C 290 315, 300 300, 300 305 L 300 260 C 275 250, 155 235, 155 285 Z" fill="url(#cream-grad)" opacity="0.95" />
+                                    <!-- Cream Dots & Strawberry details Left -->
+                                    <ellipse cx="190" cy="275" rx="8" ry="6" fill="#ff4d88" />
+                                    <ellipse cx="245" cy="290" rx="9" ry="7" fill="#ff4d88" />
+                                </g>
+
+                                <!-- RIGHT SLICE HALF -->
+                                <g id="cake-right-half">
+                                    <!-- Base Layer -->
+                                    <path d="M 300 370 C 300 370, 440 350, 440 300 L 440 200 C 440 200, 300 220, 300 270 Z" fill="#321045" opacity="0.6" />
+                                    <path d="M 300 370 C 300 370, 440 350, 440 300 L 440 250 C 440 250, 300 270, 300 370 Z" fill="#4d1c68" />
+                                    <!-- Pink Frosting Layer -->
+                                    <path d="M 300 365 C 300 365, 445 340, 445 290 L 445 260 C 445 260, 300 235, 300 260 Z" fill="url(#frosting-grad)" />
+                                    <!-- Vanilla Cream Dripping Right -->
+                                    <path d="M 300 305 C 300 300, 310 315, 320 310 C 340 295, 355 320, 370 305 C 385 290, 395 315, 405 305 C 415 285, 435 295, 445 285 L 445 260 C 445 235, 300 260, 300 305 Z" fill="url(#cream-grad)" opacity="0.95" />
+                                    <!-- Cream Dots & Strawberry details Right -->
+                                    <ellipse cx="355" cy="290" rx="9" ry="7" fill="#ff4d88" />
+                                    <ellipse cx="410" cy="275" rx="8" ry="6" fill="#ff4d88" />
+                                </g>
+
+                                <!-- TOP CAKE CREAM ROLLS -->
+                                <ellipse cx="300" cy="255" rx="145" ry="30" fill="url(#cream-grad)" />
+                                <ellipse cx="300" cy="255" rx="135" ry="25" fill="url(#frosting-grad)" opacity="0.8" />
+                                
+                                <!-- Happy Birthday Nimi Icing Writing -->
+                                <path d="M 210 255 Q 300 275 390 255" fill="none" id="textPath" />
+                                <text fill="#ffffff" font-family="'Great Vibes', cursive" font-size="28" font-weight="bold" text-anchor="middle">
+                                    <textPath href="#textPath" startOffset="50%">Happy Birthday Nimi</textPath>
+                                </text>
+
+                                <!-- Strawberries on top -->
+                                <g transform="translate(180, 240) scale(0.6)">
+                                    <path d="M 12 26 C 2 24, 0 10, 10 2 C 20 10, 18 24, 12 26 Z" fill="#e6004c" />
+                                    <ellipse cx="10" cy="14" rx="1.5" ry="2.5" fill="#ffd11a" />
+                                    <path d="M 6 4 Q 10 8 14 4" fill="none" stroke="#228b22" stroke-width="2" />
+                                </g>
+                                <g transform="translate(230, 248) scale(0.6)">
+                                    <path d="M 12 26 C 2 24, 0 10, 10 2 C 20 10, 18 24, 12 26 Z" fill="#e6004c" />
+                                    <ellipse cx="10" cy="14" rx="1.5" ry="2.5" fill="#ffd11a" />
+                                    <path d="M 6 4 Q 10 8 14 4" fill="none" stroke="#228b22" stroke-width="2" />
+                                </g>
+                                <g transform="translate(350, 248) scale(0.6)">
+                                    <path d="M 12 26 C 2 24, 0 10, 10 2 C 20 10, 18 24, 12 26 Z" fill="#e6004c" />
+                                    <ellipse cx="10" cy="14" rx="1.5" ry="2.5" fill="#ffd11a" />
+                                    <path d="M 6 4 Q 10 8 14 4" fill="none" stroke="#228b22" stroke-width="2" />
+                                </g>
+                                <g transform="translate(400, 240) scale(0.6)">
+                                    <path d="M 12 26 C 2 24, 0 10, 10 2 C 20 10, 18 24, 12 26 Z" fill="#e6004c" />
+                                    <ellipse cx="10" cy="14" rx="1.5" ry="2.5" fill="#ffd11a" />
+                                    <path d="M 6 4 Q 10 8 14 4" fill="none" stroke="#228b22" stroke-width="2" />
+                                </g>
+
+                                <!-- CANDLES (Three glowing candles) -->
+                                <!-- Candle 1 (Left) -->
+                                <g class="candle-wrapper" id="candle-left" data-lit="true">
+                                    <rect x="210" y="160" width="10" height="70" rx="3" fill="#ffe6f2" stroke="#ff80bf" stroke-width="1.5" />
+                                    <!-- Spiral Pattern -->
+                                    <path d="M 210 215 L 220 205 M 210 195 L 220 185 M 210 175 L 220 165" stroke="#ff0080" stroke-width="2" />
+                                    <!-- Wick -->
+                                    <line x1="215" y1="160" x2="215" y2="150" stroke="#4d0026" stroke-width="2.5" />
+                                    <!-- Flame -->
+                                    <path class="candle-flame" d="M 215 150 C 205 140, 210 115, 215 110 C 220 115, 225 140, 215 150 Z" fill="#ff9900" filter="url(#glow-candle)" />
+                                    <path class="candle-flame-inner" d="M 215 147 C 209 140, 212 125, 215 120 C 218 125, 221 140, 215 147 Z" fill="#ffff00" />
+                                </g>
+
+                                <!-- Candle 2 (Middle) -->
+                                <g class="candle-wrapper" id="candle-middle" data-lit="true">
+                                    <rect x="295" y="150" width="10" height="85" rx="3" fill="#ffe6f2" stroke="#ff80bf" stroke-width="1.5" />
+                                    <!-- Spiral Pattern -->
+                                    <path d="M 295 215 L 305 205 M 295 195 L 305 185 M 295 175 L 305 165 M 295 155 L 305 145" stroke="#ff0080" stroke-width="2" />
+                                    <!-- Wick -->
+                                    <line x1="300" y1="150" x2="300" y2="140" stroke="#4d0026" stroke-width="2.5" />
+                                    <!-- Flame -->
+                                    <path class="candle-flame" d="M 300 140 C 290 130, 295 105, 300 100 C 305 105, 310 130, 300 140 Z" fill="#ff9900" filter="url(#glow-candle)" />
+                                    <path class="candle-flame-inner" d="M 300 137 C 294 130, 297 115, 300 110 C 303 115, 306 130, 300 137 Z" fill="#ffff00" />
+                                </g>
+
+                                <!-- Candle 3 (Right) -->
+                                <g class="candle-wrapper" id="candle-right" data-lit="true">
+                                    <rect x="380" y="160" width="10" height="70" rx="3" fill="#ffe6f2" stroke="#ff80bf" stroke-width="1.5" />
+                                    <!-- Spiral Pattern -->
+                                    <path d="M 380 215 L 390 205 M 380 195 L 390 185 M 380 175 L 390 165" stroke="#ff0080" stroke-width="2" />
+                                    <!-- Wick -->
+                                    <line x1="385" y1="160" x2="385" y2="150" stroke="#4d0026" stroke-width="2.5" />
+                                    <!-- Flame -->
+                                    <path class="candle-flame" d="M 385 150 C 375 140, 380 115, 385 110 C 390 115, 395 140, 385 150 Z" fill="#ff9900" filter="url(#glow-candle)" />
+                                    <path class="candle-flame-inner" d="M 385 147 C 379 140, 382 125, 385 120 C 388 125, 391 140, 385 147 Z" fill="#ffff00" />
+                                </g>
+                            </g>
+
+                            <!-- SWIPE SLICE DETECTION LINE OVERLAY (Invisible line for interaction guide) -->
+                            <line x1="300" y1="80" x2="300" y2="410" stroke="rgba(255, 46, 147, 0.0)" stroke-width="30" id="cutting-line-detection" />
+                            
+                            <!-- Laser Glowing Guide Path (visible and pulsing before cutting) -->
+                            <line x1="300" y1="80" x2="300" y2="400" stroke="#ff2e93" stroke-width="2" stroke-dasharray="8 6" id="cutting-guide-line" />
+                        </svg>
+
+                        <!-- GLOWING KNIFE MOUSE OVERLAY TRACKER -->
+                        <div id="glowing-cake-knife" class="hidden">
+                            <svg class="knife-svg" viewBox="0 0 100 100">
+                                <path d="M 10 90 L 80 20 C 85 15, 95 25, 90 30 L 20 100 Z" fill="rgba(255, 255, 255, 0.9)" filter="drop-shadow(0 0 8px #ff2e93)"/>
+                                <rect x="8" y="80" width="15" height="15" fill="#4d122b" transform="rotate(45, 15, 87)"/>
+                            </svg>
+                        </div>
+
+                        <!-- Swipe instructions -->
+                        <div class="swipe-instruction">
+                            <span class="swipe-icon">✨</span>
+                            <span class="swipe-text">Drag your mouse or swipe down the centerline to cut the cake!</span>
+                        </div>
+
+                        <!-- Post-cut Magical Text -->
+                        <div id="cake-wish-container" class="hidden">
+                            <h3 class="wish-title text-glow">Make A Wish, Nimi ❤️</h3>
+                            <p class="wish-desc">May your life always be as sweet and magical as this very moment.</p>
+                            <button id="btn-candles-relight" class="btn-secondary-glow">Relight Candles 🕯️</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: OUR LITTLE MOMENTS (TIMELINE) -->
+        <section id="section-moments" class="scroll-section">
+            <div class="section-container">
+                <div class="section-title-wrapper reveal-element">
+                    <h2 class="section-title text-glow">Our Beautiful Moments ⏳</h2>
+                    <p class="section-title-sub">A stroll down the memory lane of the sweet little feelings that connect us...</p>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <!-- Central glowing timeline line -->
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item timeline-left reveal-element">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="moment-date">The Beginning</span>
+                            <h3>The First Time You Smiled 😊</h3>
+                            <p>It was like a quiet shift in my universe. The room blurred out, and your smile became the sole focus. It was the exact moment I subconsciously knew you were going to be deeply special to me.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item timeline-right reveal-element">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="moment-date">Late Nights</span>
+                            <h3>Our Endless Conversations 💬</h3>
+                            <p>Those late-night talks that sailed seamlessly from silliness to profound secrets. In those quiet hours, when the rest of the world was fast asleep, we built our own warm sanctuary of thoughts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item timeline-left reveal-element">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="moment-date">The Spices</span>
+                            <h3>Our Little Playful Fights 😭❤️</h3>
+                            <p>The tiny mock arguments, the dramatic pouts, and the cute complaints. These sweet little sparks only add flavor to our bond and remind me how adorable and lovely you truly are.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item timeline-right reveal-element">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="moment-date">The Shift</span>
+                            <h3>When it Felt Different 🌸</h3>
+                            <p>That subtle crossing of an invisible line where you weren't just a part of my days, but the quiet rhythm behind all my thoughts. A beautiful realization that you had become my comfort zone.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 5 -->
+                    <div class="timeline-item timeline-left reveal-element">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="moment-date">The Anchor</span>
+                            <h3>The Hugs I Still Remember 🫂</h3>
+                            <p>The unspoken comfort that needs no language. A memory of complete safety, a feeling of being exactly where I belong in the entire universe. Your presence remains my absolute peace.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: PHOTO GALLERY -->
+        <section id="section-gallery" class="scroll-section">
+            <div class="section-container">
+                <div class="section-title-wrapper reveal-element">
+                    <h2 class="section-title text-glow">The Memory Gallery 📸</h2>
+                    <p class="section-title-sub">A curated visual dreamscape capturing aesthetics that match your glowing radiance...</p>
+                </div>
+
+                <!-- Premium Responsive Masonry Grid -->
+                <div class="gallery-grid reveal-element">
+                    
+                    <!-- Gallery Item 1 -->
+                    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&q=80&w=800">
+                        <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&q=80&w=400" alt="Starry Cosmos Romantic Atmosphere" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">
+                                <h3>Starry Wonder</h3>
+                                <p>Like the glow in your eyes ✨</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2 -->
+                    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1517867065801-e20f409696b0?auto=format&fit=crop&q=80&w=800">
+                        <img src="https://images.unsplash.com/photo-1517867065801-e20f409696b0?auto=format&fit=crop&q=80&w=400" alt="Fairy Lights Romance" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">
+                                <h3>Fairy Sparks</h3>
+                                <p>Lighting up my dark nights 💡</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=400" alt="Sleek Rose Gold Flowers" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">
+                                <h3>Velvet Rose</h3>
+                                <p>Soft, gentle, and glowing 🌹</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 4 -->
+                    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=800">
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=400" alt="Hand Heart Silhouette" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">
+                                <h3>Perfect Silhouette</h3>
+                                <p>Unspoken heartbeats ❤️</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 5 -->
+                    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&q=80&w=800">
+                        <img src="https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&q=80&w=400" alt="Dreamy Sparkler Walkway" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">
+                                <h3>Magical Walkways</h3>
+                                <p>Entering our secret dreamscape 🌸</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 6 -->
+                    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=800">
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=400" alt="Magical Sparkler Fireworks" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">
+                                <h3>Celestial Spark</h3>
+                                <p>You make every second count ✨</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- LIGHTBOX CONTAINER FOR GALLERY MODAL -->
+        <div id="gallery-lightbox" class="hidden">
+            <span class="lightbox-close">&times;</span>
+            <div class="lightbox-content-wrapper">
+                <img id="lightbox-img" src="" alt="Zoomed romantic aesthetic view">
+                <div id="lightbox-caption"></div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: LOVE COUNTER -->
+        <section id="section-counters" class="scroll-section">
+            <div class="section-container">
+                <div class="section-title-wrapper reveal-element">
+                    <h2 class="section-title text-glow">The Heartbeat Statistics 📊</h2>
+                    <p class="section-title-sub">Quantifying the beautiful time we have spent together in the romantic spectrum...</p>
+                </div>
+
+                <div class="counters-grid">
+                    
+                    <!-- Counter 1 -->
+                    <div class="glass-card counter-card reveal-element">
+                        <div class="counter-heart-glow">❤️</div>
+                        <div class="counter-num text-glow" id="counter-days" data-target="365">0</div>
+                        <span class="counter-label">Days Knowing Each Other</span>
+                    </div>
+
+                    <!-- Counter 2 -->
+                    <div class="glass-card counter-card reveal-element">
+                        <div class="counter-heart-glow">❤️</div>
+                        <div class="counter-num text-glow" id="counter-hours" data-target="8760">0</div>
+                        <span class="counter-label">Hours Talking</span>
+                    </div>
+
+                    <!-- Counter 3 -->
+                    <div class="glass-card counter-card reveal-element">
+                        <div class="counter-heart-glow">❤️</div>
+                        <div class="counter-num text-glow" id="counter-smiles" data-target="15000">0</div>
+                        <span class="counter-label">Smiles Caused 😊</span>
+                    </div>
+
+                    <!-- Counter 4 -->
+                    <div class="glass-card counter-card reveal-element">
+                        <div class="counter-heart-glow">❤️</div>
+                        <div class="counter-num text-glow" id="counter-thoughts" data-target="999999">0</div>
+                        <span class="counter-label">Times I Thought of You</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: SECRET LETTER -->
+        <section id="section-letter" class="scroll-section">
+            <div class="section-container">
+                <div class="section-title-wrapper reveal-element">
+                    <h2 class="section-title text-glow">The Locked Surprise ✉️</h2>
+                    <p class="section-title-sub">A secret letter, locked in 3D paper, waiting for your warm touch to fly open...</p>
+                </div>
+
+                <!-- 3D Envelope Interactive Area -->
+                <div class="envelope-scene-wrapper reveal-element">
+                    <div class="envelope-container" id="interactive-envelope">
+                        <!-- Front, Back, Flaps of 3D Envelope -->
+                        <div class="envelope">
+                            <!-- Back Flap -->
+                            <div class="envelope-back"></div>
+                            <!-- Left and Right flaps -->
+                            <div class="envelope-left"></div>
+                            <div class="envelope-right"></div>
+                            <!-- Bottom Flap -->
+                            <div class="envelope-bottom"></div>
+                            
+                            <!-- The actual letter card sliding inside -->
+                            <div class="letter-card" id="letter-slide-card">
+                                <div class="letter-content-inner">
+                                    <span class="letter-stamp">💌</span>
+                                    <h3 class="letter-title-font">My Dearest Nimi,</h3>
+                                    <p class="letter-body-font">
+                                        If I could write down how much you mean to me, the stars wouldn't be enough ink. You came into my life like a silent shooting star — unexpected, incredibly gorgeous, and altering my sky forever.
+                                    </p>
+                                    <p class="letter-body-font">
+                                        Thank you for simply being yourself. Thank you for your warmth, your intelligence, your infinite cuteness, and the beautiful way you care for my messy thoughts. You are my home, Nimi.
+                                    </p>
+                                    <p class="letter-body-font">
+                                        As you cut your cake and blow out your candles, remember that somewhere, someone is holding you close in their thoughts, wishing you the most gorgeous and spectacular year ahead.
+                                    </p>
+                                    <p class="letter-signature-font">Forever Yours, ❤️</p>
+                                </div>
+                            </div>
+
+                            <!-- Top Flap (folded over top) -->
+                            <div class="envelope-top-flap" id="envelope-flap"></div>
+                        </div>
+
+                        <!-- Sparkly lock overlay -->
+                        <div class="envelope-lock-glow" id="envelope-lock-btn">
+                            <span class="lock-icon">🔒</span>
+                            <span class="lock-pulsing-circle"></span>
+                        </div>
+                    </div>
+
+                    <!-- Envelope action button -->
+                    <div class="envelope-action-btn-container">
+                        <button id="btn-open-letter" class="btn-primary-glow ripple-trigger">
+                            <span>Open Secret Letter ❤️</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: FINAL EMOTIONAL ENDING -->
+        <section id="section-ending" class="full-screen-section">
+            <div class="ending-content">
+                <span class="ending-tag reveal-element">And so, our story flows...</span>
+                
+                <!-- Large emotional typography -->
+                <div class="emotional-quote-container reveal-element">
+                    <p class="quote-text text-glow">“Some people become memories…</p>
+                    <p class="quote-text-sub text-glow">but you became a feeling.” ❤️</p>
+                </div>
+                
+                <p class="ending-paragraph reveal-element">
+                    May your birthday, and all the quiet ordinary days that follow, be filled with the same magical radiance you bring to my heart.
+                </p>
+
+                <!-- Final Action Triggering Outro Explosion -->
+                <div class="ending-actions reveal-element">
+                    <button id="btn-forever-yours" class="btn-primary-glow ripple-trigger">
+                        <span>Forever Yours ❤️</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Outro screen fading black with hearts and poem -->
+            <div id="outro-fullscreen-overlay" class="hidden">
+                <!-- Canvas specifically for exploding stars and hearts -->
+                <canvas id="outro-canvas"></canvas>
+                <div class="outro-text-wrapper">
+                    <h2 class="outro-heart-glowing">❤️</h2>
+                    <div id="outro-typing-poem"></div>
+                </div>
+                <button id="btn-outro-restart" class="btn-secondary-glow hidden">Restart Surprise ✨</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER COPYRIGHT -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Crafted with pure love for Nimi ✨</p>
+        </div>
+    </footer>
+
+    <!-- HTML5 Audio Element referencing Chopin and fallback streams -->
+    <audio id="romantic-audio" loop preload="auto">
+        <!-- Direct High Quality Chopin MP3 streaming fallback -->
+        <source src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Nocturne_in_E_flat_major%2C_Op._9_no._2.mp3" type="audio/mpeg">
+        <source src="assets/music/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Internal JS Script Link -->
+    <script src="script.js"></script>
+</body>
+</html>
