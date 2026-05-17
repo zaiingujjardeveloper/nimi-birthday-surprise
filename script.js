@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         emotionalLines: document.querySelectorAll('.emotional-line'),
         
         // Cake Ceremony Elements
+        cakeInteractiveContainer: document.querySelector('.cake-interactive-container'),
         interactiveCakeSvg: document.getElementById('interactive-cake-svg'),
         cakeLeftHalf: document.getElementById('cake-left-half'),
         cakeRightHalf: document.getElementById('cake-right-half'),
@@ -473,15 +474,15 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCakeCanvas();
     window.addEventListener('resize', resizeCakeCanvas);
 
-    // Knife follow tracking when hovering the cutting guide
-    selectors.cuttingLine.addEventListener('mouseenter', () => {
+    // Knife follow tracking when hovering anywhere on the cake SVG
+    selectors.interactiveCakeSvg.addEventListener('mouseenter', () => {
         if (cakeCutDone) return;
         selectors.cakeKnife.classList.remove('hidden');
         selectors.customCursor.style.opacity = 0;
         selectors.customCursorDot.style.opacity = 0;
     });
 
-    selectors.cuttingLine.addEventListener('mouseleave', () => {
+    selectors.interactiveCakeSvg.addEventListener('mouseleave', () => {
         selectors.cakeKnife.classList.add('hidden');
         selectors.customCursor.style.opacity = 1;
         selectors.customCursorDot.style.opacity = 1;
@@ -518,9 +519,9 @@ document.addEventListener('DOMContentLoaded', () => {
         spawnExplosions(relativeX, relativeY, 15);
     }
 
-    // Drag / Swipe Cut Detection Logic
-    selectors.cuttingLine.addEventListener('mousedown', startCutting);
-    selectors.cuttingLine.addEventListener('touchstart', startCutting, { passive: true });
+    // Forgiving Drag / Swipe Cut Detection anywhere on the Cake
+    selectors.interactiveCakeSvg.addEventListener('mousedown', startCutting);
+    selectors.interactiveCakeSvg.addEventListener('touchstart', startCutting, { passive: true });
 
     document.addEventListener('mousemove', continueCutting);
     document.addEventListener('touchmove', continueCutting, { passive: true });
@@ -539,13 +540,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isCuttingActive || cakeCutDone) return;
         addCutPoint(e);
         
-        // Draw sparklers along cut line coordinate
+        // Draw sparklers along user swipe coordinates
         const currentPt = cutPathPoints[cutPathPoints.length - 1];
         if (currentPt) {
             spawnExplosions(currentPt.relativeX, currentPt.relativeY, 3);
         }
 
-        // Check if cut coordinates span vertical threshold (top of cake to bottom of cake)
+        // Check if cut coordinates exceed swipe threshold
         verifyCutProgress();
     }
 
@@ -572,15 +573,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function verifyCutProgress() {
-        if (cutPathPoints.length < 5) return;
+        if (cutPathPoints.length < 2) return;
 
-        const yCoords = cutPathPoints.map(p => p.relativeY);
-        const minY = Math.min(...yCoords);
-        const maxY = Math.max(...yCoords);
+        const startPt = cutPathPoints[0];
+        const currentPt = cutPathPoints[cutPathPoints.length - 1];
 
-        // Cake vertical center coordinate range: top wick is ~100px, base plate is ~400px
-        // If they drag from top to bottom (spanning 150px to 360px), trigger slice!
-        if (minY < 180 && maxY > 330) {
+        // Measure distance swiped/dragged in any direction
+        const dx = currentPt.x - startPt.x;
+        const dy = currentPt.y - startPt.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // If user drags anywhere on the cake by more than 40 pixels, trigger!
+        if (distance > 40) {
             executeCakeCut();
         }
     }

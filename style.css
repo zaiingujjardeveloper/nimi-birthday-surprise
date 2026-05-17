@@ -936,7 +936,7 @@ button:active {
 }
 
 #cutting-line-detection {
-    cursor: ns-resize !important;
+    cursor: none !important;
 }
 
 /* Glowing knife overlay that sticks to cursor */
